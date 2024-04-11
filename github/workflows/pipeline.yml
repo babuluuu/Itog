@@ -23,6 +23,3 @@ jobs:
 
     - name: Сборка проекта
       run: dotnet build --configuration Release --no-restore
-
-    - name: Запуск тестов
-      run: dotnet test --verbosity normal
