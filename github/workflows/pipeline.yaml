@@ -1,0 +1,28 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout кода
+      uses: actions/checkout@v2
+
+    - name: Установка .NET Core SDK
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0.x' 
+
+    - name: Восстановление зависимостей
+      run: dotnet restore
+
+    - name: Сборка проекта
+      run: dotnet build --configuration Release --no-restore
+
+    - name: Запуск тестов
+      run: dotnet test --verbosity normal
